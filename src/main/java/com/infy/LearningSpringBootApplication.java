@@ -27,11 +27,19 @@ public class LearningSpringBootApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception{
-		CustomerLoginDTO customerLogin = new CustomerLoginDTO();
-		customerLogin.setLoginName("buhari");
-		customerLogin.setPassword("buhari123");
-		LOGGER.info(environment.getProperty("SUCCESS"));
 
+		try {
+			CustomerLoginDTO customerLogin = new CustomerLoginDTO();
+			customerLogin.setLoginName("buhari");
+			customerLogin.setPassword("buhari123");
+
+			customerLoginController.authenticateCustomer(customerLogin);
+
+			LOGGER.info(environment.getProperty("SUCCESS"));
+
+		} catch (InfyBankException exception){
+			LOGGER.error(environment.getProperty(exception.getMessage()));
+		}
 	}
 
 }

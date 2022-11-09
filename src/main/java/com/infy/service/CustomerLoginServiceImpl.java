@@ -14,7 +14,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService{
     @Autowired
     private CustomerLoginRepository customerLoginRepository;
 
-    @Autowired
+    @Override
     public String authenticateCustomer(CustomerLoginDTO customerLogin) throws InfyBankException {
 
         try {
